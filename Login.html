@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="./assets/css/login.css">
+        <!-- -------------------font Awesome Link------------- -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    button{
+        background-color: purple;
+        border: none;
+        color: white;
+        padding: 12px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .cross{
+    position: fixed;
+    top:4%;
+    right:7%;    
+    z-index: 999;
+}
+.cross a{
+    cursor: pointer;
+}
+  .cross i{
+      font-size: 40px;
+      color: #fff;
+    
+      cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <a class="cross" href="./index.html"><i class="fa-solid fa-xmark"></i></a>
+    <div id="box">
+        <h1 id="loginhead">Login to OTTPlay</h1>
+        <p id="desc">Login to continue enjoying uninterrupted video and personalised experience.</p>
+        <a class="fang" href="https://appleid.apple.com/auth/authorize?client_id=com.ht.ottplay.service&redirect_uri=https%3A%2F%2Faccounts.hindustantimes.com%2Fauth_apple&response_type=code%20id_token&scope=name%20email&nonce=%5BNONCE%5D&response_mode=form_post&state=OTT"><img src="https://www.zee5.com/images/apple-social-icon-circle.svg?ver=2.50.94" alt="">
+        </a> 
+       <a class="fang" href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dsign%2Binto%2Bgoogle%2Baccount%2Bpage%2Burl%26rlz%3D1C1CHBD_enIN1085IN1085%26oq%3Dsign%2Binto%2Bgoogle%2Baccount%2Bpage%2Burl%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCTExOTEzajBqN6gCALACAA%26sourceid%3Dchrome%26ie%3DUTF-8&ec=GAlAAQ&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S202242135%3A1706692821507632&theme=glif"> <img src="https://www.zee5.com/images/google-social-icon-circle.svg?ver=2.50.94" alt="">
+        </a> 
+        <a class="fang" href="https://www.facebook.com/login.php"><img src="https://www.zee5.com/images/fb-social-icon-circle.svg?ver=2.50.94" alt="">
+        </a>
+        <a class="fang" href="https://api.twitter.com/oauth/authenticate?oauth_token=XENwRgAAAAAA2CPSAAABfyILk34&force_login=false"><img src="https://www.zee5.com/images/twitter-social-icon.svg?ver=2.50.94" alt="">
+    </a>
+    <div id="or">
+        or
+    </div>
+    <!-- <span id="top">Enter Phone or Email ID</span> -->
+    <br>
+    <input type="text" id="mail" name="Email ID or Mobile Number" placeholder="Enter Phone or Email ID" required >
+    <div class="line"></div>
+<br>
+    <!-- <span id="top1">Enter Password</span> -->
+    <br>
+    <input type="password" id="pass1"  name="Password" placeholder="Enter Password" required>
+
+    <div class="line"></div>
+
+    <p><a >Forgot Password?</a></p>
+   
+<button onClick="submit2()" >Log In</button>
+<br>
+<br>
+<span>New to OTTPlay?</span> <a style="color:#fff; " href="Signin.html"><u>Register</u></a>
+</div>
+</body>
+</html>
+<script>
+ var regdUsers = JSON.parse(localStorage.getItem("signUpDetails"));
+  console.log(regdUsers);
+
+  function submit2() {
+    
+
+    var mail = document.querySelector("#mail").value;
+    var pass1 =document.querySelector("#pass1").value;
+ 
+
+    var flag= false;
+    for (var i = 0; i < regdUsers.length; i++) {
+      if (regdUsers[i].email == mail && regdUsers[i].pass == pass1) {
+        flag=true;
+
+      } else{
+        flag=false;
+      }
+    }
+    if(flag==true){
+        
+        alert("Login Success");
+        window.location.href="index.html";
+    }
+    else{
+        alert("Login Failed Please fill correct details");
+
+    }
+  }
+</script>
